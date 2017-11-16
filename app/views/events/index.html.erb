@@ -1,0 +1,28 @@
+
+<div id='calendar'></div>
+<script>
+	$(document).ready(function() {
+
+	// page is now ready, initialize the calendar...
+
+		$('#calendar').fullCalendar({
+				// put your options and callbacks here
+				events: [
+							{
+								title  : 'Evento 1',
+								start  : '<%= Date.today %>'
+							},
+							{
+								title  : 'Evento 2',
+								start  : '<%= Date.today %>',
+								end    : '<%= Date.today + 4.days %>'
+							},
+							{
+								title  : 'Evento 3',
+								start  : '<%= Date.today %>' + 'T12:30:00',
+								allDay : false // will make the time show
+							}
+					]
+				});
+	});
+</script>
