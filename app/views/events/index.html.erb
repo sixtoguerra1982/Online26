@@ -1,28 +1,33 @@
+<p id="notice"><%= notice %></p>
 
-<div id='calendar'></div>
-<script>
-	$(document).ready(function() {
+<h1>Events</h1>
 
-	// page is now ready, initialize the calendar...
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Allday</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-		$('#calendar').fullCalendar({
-				// put your options and callbacks here
-				events: [
-							{
-								title  : 'Evento 1',
-								start  : '<%= Date.today %>'
-							},
-							{
-								title  : 'Evento 2',
-								start  : '<%= Date.today %>',
-								end    : '<%= Date.today + 4.days %>'
-							},
-							{
-								title  : 'Evento 3',
-								start  : '<%= Date.today %>' + 'T12:30:00',
-								allDay : false // will make the time show
-							}
-					]
-				});
-	});
-</script>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.start %></td>
+        <td><%= event.end %></td>
+        <td><%= event.allday %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
