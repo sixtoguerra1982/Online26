@@ -31,3 +31,13 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
+
+<div id='calendar'></div>
+<script>
+  $(document).ready(function() {
+  // page is now ready, initialize the calendar...
+    $('#calendar').fullCalendar({
+      events: '<%= events_path %>',
+    });
+  });
+</script>
